@@ -1,0 +1,40 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<div class="container">
+    <table class="table table-striped" *ngIf="employees && employees.length > 0  else elseBlock">
+        <thead>
+        <tr>
+            <th>DiagnosticCenter ID</th>
+            <th>DiagnosticCenter NAME</th>
+            <th>Contact NUMBER</th>
+            <th>Address</th>
+            <th>DELETE DiagnosticCenter</th>
+            <th>EDIT DiagnosticCenter</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of employees  ">
+                <td> {{e.id}} </td>
+                <td> {{e.centername}} </td>
+                <td> {{e.contactnumber}} </td>
+                <td> {{e.address}} </td>
+                <td>
+                    <button type="button" class="btn btn-large btn-block btn-primary" (click)=delete(e)>Delete</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-large btn-block btn-primary" (click)=update(e)>Edit</button>
+                </td>
+                <td>
+            </tr>
+        </tbody>
+    </table>
+    <ng-template #elseBlock>
+        <h4 align="center"> There are no DiagnosticCenter to display,please add the DiagnosticCenter! </h4>
+    </ng-template>
+
+</div>  
+<div>
+    <h2>{{message}}</h2>
+</div>

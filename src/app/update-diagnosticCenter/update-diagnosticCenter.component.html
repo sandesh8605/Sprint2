@@ -1,0 +1,86 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<div class="container">
+
+    <h3>ADD DiagnosticCenter</h3>
+
+    <form #userForm="ngForm" (ngSubmit)='onUpdate(userForm.value)'>
+
+        <div class="form-group">
+
+            <label>id</label> 
+
+            <input required minlength="1" type="number" [(ngModel)]="obj1.id" readonly="readonly" #bookIdRef='ngModel'
+                name="id" ngModel class="form-control">
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>DiagnosticCenter </label>
+
+            <input required minlength="1" type="text" [(ngModel)]="obj1.centername" #empNameRef='ngModel' name="centername" ngModel
+                class="form-control">
+
+            <div *ngIf='empNameRef.errors
+                        && empNameRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!empNameRef.errors.required'>
+
+                    Provide DiagnosticCenter
+
+                </div>
+
+                <div *ngIf='empNameRef.errors.pattern'>Name should be minimum of 6 characters length</div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Contact number </label>
+
+            <input required minlength="1" type="number" [(ngModel)]="obj1.contactnumber" #empsalRef='ngModel' name="contactnumber"
+                ngModel class="form-control">
+
+            <div *ngIf='empsalRef.errors && empsalRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!empsalRef.errors.required'> Contact </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <label>address</label>
+
+            <input required minlength="6" type="text" [(ngModel)]="obj1.address" #empcompanyName='ngModel' name="address"
+                ngModel class="form-control">
+
+            <div *ngIf='empcompanyName.errors
+                        && empcompanyName.touched' class="alert alert-danger">
+
+                <div [hidden]='!empcompanyName.errors.required'>
+
+                    Provide address
+
+                </div>
+
+                <div *ngIf='empcompanyName.errors.pattern'>Company name should be minimum of 6 characters length</div>
+
+            </div>
+
+        </div>
+        <input [disabled]="userForm.invalid" type="submit" value="Edit DiagnosticCenter" class="btn btn-primary">
+
+    </form>
+
+</div>
+<div>
+    <h2>{{message}}</h2>
+</div>
